@@ -1,0 +1,8 @@
+SELECT eqp.nombre, SUM(clasi.j_jugados) AS JJ, SUM(clasi.j_ganados) AS JG, SUM(clasi.j_empatados) as JE,
+	SUM(clasi.j_perdidos) AS JP, SUM(clasi.goles_favor) AS GF, SUM(clasi.goles_contra) as GC,
+    SUM(clasi.diferencia) AS Dif, SUM(clasi.puntos) AS Pts
+	FROM clasificacion clasi
+	JOIN equipo eqp ON clasi.equipo_id = eqp.id
+    WHERE clasi.grupo_id = 214 AND clasi.jornada_id <= 1596 #AND clasi.is_local = 0
+    GROUP BY clasi.equipo_id
+    ORDER By Pts DESC, Dif DESC ;
